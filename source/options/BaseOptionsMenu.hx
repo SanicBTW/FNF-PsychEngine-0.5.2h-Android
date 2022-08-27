@@ -1,5 +1,6 @@
 package options;
 
+import flixel.addons.transition.FlxTransitionableState;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -123,6 +124,10 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 		changeSelection();
 		reloadCheckboxes();
+
+		#if android
+		addVirtualPad(LEFT_FULL, A_B);
+		#end
 	}
 
 	public function addOption(option:Option) {
@@ -145,6 +150,9 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		}
 
 		if (controls.BACK) {
+			#if android
+			removeVirtualPad();
+			#end
 			close();
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 		}

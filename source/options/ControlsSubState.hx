@@ -110,6 +110,10 @@ class ControlsSubState extends MusicBeatSubstate {
 			}
 		}
 		changeSelection();
+
+		#if android
+		addVirtualPad(LEFT_FULL, A_B);
+		#end
 	}
 
 	var leaving:Bool = false;
@@ -127,6 +131,9 @@ class ControlsSubState extends MusicBeatSubstate {
 			}
 
 			if (controls.BACK) {
+				#if android
+				removeVirtualPad();
+				#end
 				ClientPrefs.reloadControls();
 				close();
 				FlxG.sound.play(Paths.sound('cancelMenu'));

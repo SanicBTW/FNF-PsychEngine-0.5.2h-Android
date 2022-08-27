@@ -1,10 +1,8 @@
 # What is this?
-Its Psych Engine 0.5.2h with Kade Engine 1.5.3 Input
+This repo is using the template of Psych Engine 0.5.2h with Kade Engine 1.5.3 Input
 
-Might add a little bit of tweaking to the engine itself
+There is some stuff that I want to do like: accessing system storage for mods and that stuff but that might take me more time than the base port
 
-There are memory issues with input, dunno what to do but here is it lol
+I added Android controls to this which are the ones used on [FNF-PE-0.3.2h](https://github.com/SanicBTW/FNF-PE-0.3.2h)
 
-(No, it doesn't use KE timings, only Input `keyShit`, it uses the same timings as 0.5.2h)
-
-Also you might get the "two_keys" achievement even though you pressed all keys prob, achievements are kinda broken ngl (only that one I hope)
+Thanks to MAJigsaw for the [Android controls](https://github.com/MAJigsaw77/FNF-Android-Porting)

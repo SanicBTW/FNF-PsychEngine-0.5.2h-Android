@@ -1,5 +1,6 @@
 package options;
 
+import flixel.addons.transition.FlxTransitionableState;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -29,7 +30,7 @@ using StringTools;
 
 class OptionsState extends MusicBeatState
 {
-	var options:Array<String> = ['Note Colors', 'Controls', 'Adjust Delay and Combo', 'Graphics', 'Visuals and UI', 'Gameplay'];
+	var options:Array<String> = ['Note Colors', 'Controls', 'Adjust Delay and Combo', 'Graphics', 'Visuals and UI', 'Gameplay', #if android 'Mobile Controls' #end];
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private static var curSelected:Int = 0;
 	public static var menuBG:FlxSprite;
@@ -48,6 +49,10 @@ class OptionsState extends MusicBeatState
 				openSubState(new options.GameplaySettingsSubState());
 			case 'Adjust Delay and Combo':
 				LoadingState.loadAndSwitchState(new options.NoteOffsetState());
+			#if android
+			case 'Mobile Controls':
+				openSubState(new android.AndroidControlsSubState());
+			#end
 		}
 	}
 
@@ -86,11 +91,17 @@ class OptionsState extends MusicBeatState
 		changeSelection();
 		ClientPrefs.saveSettings();
 
+		#if android
+		addVirtualPad(UP_DOWN, A_B);
+		#end
+
 		super.create();
 	}
 
 	override function closeSubState() {
 		super.closeSubState();
+		FlxTransitionableState.skipNextTransOut = true;
+		FlxG.resetState();
 		ClientPrefs.saveSettings();
 	}
 
@@ -110,6 +121,9 @@ class OptionsState extends MusicBeatState
 		}
 
 		if (controls.ACCEPT) {
+			#if android
+			removeVirtualPad();
+			#end
 			openSelectedSubstate(options[curSelected]);
 		}
 	}

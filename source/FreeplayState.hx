@@ -54,6 +54,8 @@ class FreeplayState extends MusicBeatState
 	{
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
+
+		songs = [];
 		
 		persistentUpdate = true;
 		PlayState.isStoryMode = false;
@@ -203,6 +205,12 @@ class FreeplayState extends MusicBeatState
 		text.setFormat(Paths.font("vcr.ttf"), size, FlxColor.WHITE, RIGHT);
 		text.scrollFactor.set();
 		add(text);
+
+		//bro add functions on other buttons or smth -- i will in this repo fr
+		#if android
+		addVirtualPad(LEFT_FULL, A_B);
+		#end
+
 		super.create();
 	}
 

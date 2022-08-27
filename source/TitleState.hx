@@ -87,6 +87,10 @@ class TitleState extends MusicBeatState
 		FlxG.sound.volumeUpKeys = volumeUpKeys;
 		FlxG.keys.preventDefaultKeys = [TAB];
 
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
+
 		PlayerSettings.init();
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
@@ -292,7 +296,7 @@ class TitleState extends MusicBeatState
 
 		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER || controls.ACCEPT;
 
-		#if mobile
+		#if android
 		for (touch in FlxG.touches.list)
 		{
 			if (touch.justPressed)

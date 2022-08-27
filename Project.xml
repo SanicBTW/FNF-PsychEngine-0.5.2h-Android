@@ -32,7 +32,7 @@
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
 
 	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" resizable="false"/>
+	<window if="mobile" orientation="landscape" fullscreen="true" width="1280" height="720" resizable="false" allow-shaders="true" require-shaders="true" />
 
 	<!--Switch-specific-->
 	<window if="switch" orientation="landscape" fullscreen="true" width="0" height="0" resizable="true" />
@@ -93,6 +93,8 @@
 	<assets path="assets/week4"         library="week4"         exclude="*.mp3"/>
 	<assets path="assets/week5"         library="week5"         exclude="*.mp3"/>
 	<assets path="assets/week6"         library="week6"         exclude="*.mp3"/>
+
+	<assets path="assets/android" if="android" />
 	
 	<assets path='example_mods' rename='mods' embed='false' if="MODS_ALLOWED"/>
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
